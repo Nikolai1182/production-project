@@ -1,11 +1,19 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
-import { MainPageAsync } from "./pages/MainPage/ManePage.async";
+
 import { Suspense } from "react";
-import { useTheme } from "./theme/useTheme";
+
 
 import "./styles/index.scss"
-import { classNames } from "./helpers/classNames/classNames";
+
+import { useTheme } from "app/providers/ThemeProvider";
+
+import { AboutPage } from "pages/AboutPage";
+import { MainPage } from "pages/MainPage";
+import { classNames } from "shared";
+
+
+
+
 
 const App = () => {
     const { theme, toggleTheme } = useTheme();
@@ -19,8 +27,8 @@ const App = () => {
             </button>
              <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-                <Route path="/" element={<MainPageAsync />} />
-                <Route path="/about" element={<AboutPageAsync />} />
+                <Route path="/" element={<MainPage />} />
+                <Route path="/about" element={<AboutPage />} />
             </Routes>
             </Suspense>
         </div>
