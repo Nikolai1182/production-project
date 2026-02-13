@@ -8,11 +8,11 @@ import { ThemeProvider } from "app/providers/ThemeProvider"
 const rootElement = document.getElementById("root")!
 
 createRoot(rootElement).render(
-  <ThemeProvider>
   <BrowserRouter>
+  <ThemeProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </BrowserRouter>
   </ThemeProvider>
+  </BrowserRouter>
 )
