@@ -1,18 +1,20 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import App from "./app/App"
-import "./app/styles/index.scss"
-import { BrowserRouter } from "react-router-dom"
-import { ThemeProvider } from "app/providers/ThemeProvider"
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-const rootElement = document.getElementById("root")!
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+
+import App from './app/App';
+import './app/styles/index.scss';
+
+const rootElement = document.getElementById('root')!;
 
 createRoot(rootElement).render(
   <BrowserRouter>
-  <ThemeProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ThemeProvider>
+    <ThemeProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ThemeProvider>
   </BrowserRouter>
-)
+);

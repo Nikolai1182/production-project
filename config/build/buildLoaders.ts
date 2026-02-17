@@ -1,10 +1,15 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
+
 import { BuildOptions } from "./types/config";
 
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 
-  console.log('buildLoaders isDev =', isDev);
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  };
+
   const cssLoader = {
     test: /\.s[ac]ss$/i,
     type: "javascript/auto",
@@ -13,13 +18,14 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
       {
         loader: "css-loader",
         options: {
-          esModule: true,
+          esModule: false,
           importLoaders: 1,
           modules: {
             auto: /\.module\.(scss|sass|css)$/i,
             localIdentName: isDev
               ? "[path][name]__[local]--[hash:base64:5]"
               : "[hash:base64:8]",
+            namedExport: false,
           },
         },
       },
@@ -27,14 +33,20 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  console.log('CSS loader rule active for SCSS modules');
-
-
   const tsLoader = {
     test: /\.tsx?$/,
     use: "ts-loader",
     exclude: /node_modules/,
   };
 
-  return [tsLoader, cssLoader];
+  const fileLoader =  {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  };
+
+  return [tsLoader, cssLoader, svgLoader, fileLoader];
 }

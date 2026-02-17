@@ -1,16 +1,16 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export enum Theme {
-    LIGHT = "light",
-    DARK = "dark",
+  LIGHT = 'light',
+  DARK = 'dark',
 }
 
 export interface ThemeContextProps {
-    theme: Theme;
-    setTheme: (theme: Theme) => void;
-    toggleTheme: () => void;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
+export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const LOCAL_STORAGE_THEME_KEY = "theme";
+export const LOCAL_STORAGE_THEME_KEY = 'theme';

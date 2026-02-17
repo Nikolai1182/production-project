@@ -1,0 +1,15 @@
+.themeSwitcher {
+  background-color: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.themeDarkIcon,
+.themeLightIcon {
+  width: 25px;
+  height: 25px;
+}
